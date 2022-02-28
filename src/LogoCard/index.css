@@ -1,0 +1,12 @@
+.choiceItem {
+  list-style: none;
+}
+.imageSizing {
+  height: 200px;
+  width: 200px;
+}
+.butt {
+  background-color: transparent;
+  border-width: 0px;
+  cursor: pointer;
+}

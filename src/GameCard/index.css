@@ -1,0 +1,90 @@
+.bgContainer {
+  background-color: #223a5f;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size: cover;
+}
+.headerContainer {
+  background-color: transparent;
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 60%;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.textHeader {
+  color: white;
+  font-size: 15px;
+  font-family: 'roboto';
+  font-weight: bold;
+}
+.scoreCard {
+  background-color: white;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.scoreText {
+  font-family: 'Roboto';
+  font-size: 20px;
+  margin-bottom: 0px;
+  color: black;
+}
+
+.gameContainer {
+  margin-top: 40px;
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.RulesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.imageSizingOptions {
+  height: 200px;
+  width: 200px;
+}
+
+.youContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+}
+
+.optionsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.playAgainButton {
+  width: 80px;
+  font-family: 'roboto';
+  border-width: 0px;
+  border-radius: 15px;
+  height: 30px;
+  margin-bottom: 90px;
+  cursor: pointer;
+}
