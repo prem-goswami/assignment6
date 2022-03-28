@@ -22,10 +22,49 @@ const choicesList = [
 ]
 
 class GameCard extends Component {
-  state = {activeId: '', optionSelected: false, score: 0}
+  state = {
+    activeId: '',
+    optionSelected: false,
+    score: 0,
+    displayText: '',
+    randomOption: '',
+    selectedOption: '',
+  }
 
   setActiveOptionId = id => {
-    this.setState({activeId: id, optionSelected: true})
+    const yourOption = choicesList.filter(eachItem => eachItem.id === id)
+    const randomNumber = Math.floor(Math.random() * 3)
+    const opponentOption = choicesList[randomNumber]
+    let resultText
+    if (yourOption[0].id === opponentOption.id) {
+      resultText = 'it Is Draw'
+    } else if (yourOption[0].id === 'ROCK' && opponentOption.id === 'PAPER') {
+      resultText = 'You Lose'
+      this.decrementScore()
+    } else if (
+      yourOption[0].id === 'PAPER' &&
+      opponentOption.id === 'SCISSORS'
+    ) {
+      resultText = 'You Lose'
+      this.decrementScore()
+    } else if (
+      yourOption[0].id === 'SCISSORS' &&
+      opponentOption.id === 'ROCK'
+    ) {
+      resultText = 'You Lose'
+      this.decrementScore()
+    } else {
+      resultText = 'YOU WON'
+      this.incrementScore()
+    }
+
+    this.setState({
+      activeId: id,
+      optionSelected: true,
+      displayText: resultText,
+      randomOption: opponentOption,
+      selectedOption: yourOption,
+    })
   }
 
   renderHeaderContainer = () => {
@@ -63,35 +102,16 @@ class GameCard extends Component {
     this.setState(prevState => ({score: prevState.score + 1}))
   }
 
+  drawScore = () => {
+    this.setState(prevState => ({score: prevState.score}))
+  }
+
   clickedPlayAgain = () => {
     this.setState({optionSelected: false})
   }
 
   renderResultContainer = () => {
-    const {activeId} = this.state
-    const selectedOption = choicesList.filter(
-      eachItem => eachItem.id === activeId,
-    )
-    const randomNumber = Math.floor(Math.random() * 3)
-    const randomOption = choicesList[randomNumber]
-    let displayText
-    if (selectedOption[0].id === randomOption.id) {
-      displayText = 'it Is Draw'
-    } else if (selectedOption[0].id === 'ROCK' && randomOption.id === 'PAPER') {
-      displayText = 'You Lose'
-    } else if (
-      selectedOption[0].id === 'PAPER' &&
-      randomOption.id === 'SCISSORS'
-    ) {
-      displayText = 'You Lose'
-    } else if (
-      selectedOption[0].id === 'SCISSORS' &&
-      randomOption.id === 'ROCK'
-    ) {
-      displayText = 'You Lose'
-    } else {
-      displayText = 'YOU WON'
-    }
+    const {activeId, displayText, randomOption, selectedOption} = this.state
     return (
       <div className="resultContainer">
         <div className="optionsContainer">
@@ -125,7 +145,7 @@ class GameCard extends Component {
   }
 
   render() {
-    const {activeId, optionSelected} = this.state
+    const {optionSelected} = this.state
 
     return (
       <div className="bgContainer">
